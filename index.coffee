@@ -18,7 +18,7 @@ app.all '*', (req, res, next) ->
   next()
 
 
-app.get '/:application/i', bf.webService(logger.write)
+app.get '/:application/i', bf.webService(logger.parse)
 
 
 process.setuid(config.uid) if config.uid
