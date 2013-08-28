@@ -1,4 +1,5 @@
 config = require 'config'
+fs     = require 'fs'
 
 write = (params, done) ->
   data = params
@@ -7,7 +8,6 @@ write = (params, done) ->
     logs = data.logs.map((l) -> JSON.stringify(l)).join("\n") + "\n"
     fs.appendFile "#{config.data.folder}/#{data.application}.log", logs, (err) -> 
       console.error(err) if err?
-      console.log "Log file written"
 
   done null, true
 
