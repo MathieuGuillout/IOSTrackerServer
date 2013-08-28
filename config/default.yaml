@@ -1,0 +1,5 @@
+web:
+  port: 9111
+
+data:
+  folder: "/home/web/sites/logs/data"

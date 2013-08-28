@@ -1,0 +1,19 @@
+{
+  "name": "logs",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "dependencies": {
+    "barefoot": "0.0.21",
+    "express": "~3.3.5",
+    "config": "~0.4.29",
+    "js-yaml": "~2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD"
+}
