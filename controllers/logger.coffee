@@ -15,8 +15,11 @@ dicoCacheTimedLogs = {}
 
 parse = (params, done) ->
   data = params
-  data.logs = JSON.parse(data.logs) if data.logs?
   if data.logs?
+    data.logs = data.logs.replace(/[\n\r\t]*/g, '')
+    console.log data.logs
+    data.logs = JSON.parse(data.logs) if data.logs?
+
     logsToWrite = data.logs.filter (log) -> not isTimedLog log
     write { logs: logsToWrite, application: data.application }
     timedLogs = data.logs.filter (log) -> isTimedLog(log)
@@ -27,7 +30,8 @@ parse = (params, done) ->
   done null, true
 
 write = ({ logs, application }, done) ->
-  logsStr = logs.map((l) -> JSON.stringify(l)).join("\n") + "\n"
+  logsStr = logs.map((l) -> JSON.stringify(l)).join("\n")
+  logsStr += "\n" if logs.length > 0
   fs.appendFile "#{config.data.folder}/#{application}.log", logsStr, (err) -> 
     console.error(err) if err?
     done(null, true) if done?
